@@ -1,16 +1,87 @@
-# React + Vite
+# Task Manager Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About
 
-Currently, two official plugins are available:
+This is the frontend of the task manager project.
+It connects with backend APIs and shows UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tech Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React (Vite)
+* React Router DOM
+* Axios
+* Tailwind CSS
+* react-hot-toast
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Clone Project
+
+```
+git clone <YOUR_FRONTEND_REPO_LINK>
+cd frontend
+```
+
+---
+
+## Setup
+
+1. Install dependencies:
+
+```
+npm install
+```
+
+2. Create `.env` file:
+
+```
+VITE_API_URL=http://localhost:8000/api
+```
+
+3. Run project:
+
+```
+npm run dev
+```
+
+---
+
+## App URL
+
+```
+http://localhost:5173
+```
+
+---
+
+## Backend Required
+
+Backend must be running before starting frontend.
+
+Backend repo:
+
+```
+https://github.com/Abhis1605/task-management-backend
+```
+
+---
+
+## Project Structure
+
+```
+src/
+  components/
+  pages/
+  utils/
+```
+
+---
+
+## Notes
+
+* Token is stored in localStorage
+* Axios is used for API calls
+* API URL is taken from .env file
+* Uses Tailwind for styling
