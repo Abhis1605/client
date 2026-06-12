@@ -1,6 +1,7 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
-export default function AuthForm({ title, buttonText, onSubmit }) {
+function AuthForm({ title, buttonText, onSubmit, isLogin }) {
   const [formData, setFormData] = useState({
     username: "",
     password: ""
@@ -44,11 +45,30 @@ export default function AuthForm({ title, buttonText, onSubmit }) {
           className="w-full border p-2 mb-3"
         />
 
-        <button className="w-full bg-blue-500 text-white p-2 rounded">
+        <button className="w-full bg-blue-500 text-white p-2 rounded mb-3">
           {buttonText}
         </button>
+        <p className="text-sm text-center">
+          {isLogin ? (
+            <>
+              Don't have an account?{" "}
+              <Link to="/register" className="text-blue-600 font-medium">
+                Register
+              </Link>
+            </>
+          ) : (
+            <>
+              Already have an account?{" "}
+              <Link to="/login" className="text-blue-600 font-medium">
+                Login
+              </Link>
+            </>
+          )}
+        </p>
+
       </form>
     </div>
   )
 }
 
+export default AuthForm
