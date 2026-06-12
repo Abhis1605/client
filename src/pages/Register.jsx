@@ -22,6 +22,7 @@ export default function Register() {
       title="Register"
       buttonText="Register"
       onSubmit={handleRegister}
+      isLogin={false}
     />
   )
 }

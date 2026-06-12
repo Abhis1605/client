@@ -12,6 +12,21 @@ API.interceptors.request.use((config) => {
   }
 
   return config
+
 })
+
+// if token expired redirect to login
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token")
+      window.dispatchEvent(new Event("auth-changed"))
+      window.location.href = "/login"
+    }
+
+    return Promise.reject(error)
+  }
+)
 
 export default API

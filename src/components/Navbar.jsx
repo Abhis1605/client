@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-export default function Navbar() {
+export default function Navbar({ onLogout }) {
     const navigate = useNavigate()
 
     const token = localStorage.getItem('token')
@@ -19,7 +19,9 @@ export default function Navbar() {
     // Basic Logout by removing token and navigate to login
      const handleLogout = () => {
     localStorage.removeItem("token")
-    navigate("/login")
+    window.dispatchEvent(new Event("auth-changed"))
+    onLogout?.()
+    navigate("/login", { replace: true })
   }
   return (
     <div className="bg-blue-600 text-white">

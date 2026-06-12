@@ -48,6 +48,7 @@ function AuthForm({ title, buttonText, onSubmit, isLogin }) {
         <button className="w-full bg-blue-500 text-white p-2 rounded mb-3">
           {buttonText}
         </button>
+
         <p className="text-sm text-center">
           {isLogin ? (
             <>

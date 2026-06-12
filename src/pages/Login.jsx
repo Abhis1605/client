@@ -3,7 +3,7 @@ import AuthForm from "../components/AuthForm"
 import API from "../utils/api"
 import toast from "react-hot-toast"
 
-function Login() {
+function Login({ setToken }) {  
   const navigate = useNavigate()
 
   const handleLogin = async (formData) => {
@@ -11,17 +11,23 @@ function Login() {
       const res = await API.post("/auth/login", formData)
 
       const token = res.data.token
-      localStorage.setItem("token", token)
-
       const payload = JSON.parse(atob(token.split(".")[1]))
 
+      // store token
+      localStorage.setItem("token", token)
+
+      setToken(token)
+
+      window.dispatchEvent(new Event("auth-changed"))
+
       if (payload.role === "admin") {
-        navigate("/admin")
+        navigate("/admin", { replace: true })
       } else {
-        navigate("/dashboard")
+        navigate("/dashboard", { replace: true })
       }
+
     } catch (err) {
-      toast.error('Login failed')
+      toast.error("Login failed")
     }
   }
 
@@ -30,6 +36,7 @@ function Login() {
       title="Login"
       buttonText="Login"
       onSubmit={handleLogin}
+      isLogin={true}
     />
   )
 }
